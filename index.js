@@ -54,16 +54,16 @@ app.listen(port, () => {
 
 //////////////////////////7Queries que necesito para sacar info de LANDINGS///////////////////////////////////
 
-//1. Quiero obtener el nombre y la masa de los meteoritos CUANDO especifique la mínima masa de un meteorito
+//1H. Quiero obtener el nombre y la masa de los meteoritos CUANDO especifique la mínima masa de un meteorito
 //Utilizamos el operador gte (greater than equal gte) para buscar y la proyección para que aparezcan los datos que queremos
 
     //const aux1 = NASA_INFO.collection('Landings').find({mass: {$gte: "20"}}).project({name:1, mass:1, _id:0 });
 
-//2. Quiero obtener el nombre y la masa de los meteoritos CUANDO especifique la masa exacta del meteorito
+//2H. Quiero obtener el nombre y la masa de los meteoritos CUANDO especifique la masa exacta del meteorito
 
     //const aux2 = NASA_INFO.collection('Landings').find({mass:"20"}).project({name:1, mass:1, _id:0 });
 
-//3. Quiero obtener el nombre y la clase de todos los meteoritos CUANDO yo especifique la clase
+//3H. Quiero obtener el nombre y la clase de todos los meteoritos CUANDO yo especifique la clase
 
     //const aux3 = NASA_INFO.collection('Landings').find({recclass:"L5"}).project({name:1, recclass:1, _id:0 });
 
