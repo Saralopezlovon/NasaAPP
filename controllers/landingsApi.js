@@ -7,7 +7,7 @@ const landingApi = {
 
         try{
             if(req.query.minimum_mass){
-                data= await Landing.find({mass: {$gte: req.query.minimum_mass}}, '-_id -id -nametype -recclass -fall -year -reclat -reclong -geolocation ')
+                data= await Landing.find({mass: {$gte: req.query.minimum_mass}}, {name:1, mass:1, _id:0 })
                 res.status(200).json(data)
 
             } else{
@@ -33,7 +33,7 @@ const landingApi = {
 
         try{
             if(req.params.mass){
-                data= await Landing.find({mass: req.params.mass}, '-_id -id -nametype -recclass -fall -year -reclat -reclong -geolocation ')
+                data= await Landing.find({mass: req.params.mass}, {name:1, mass:1, _id:0 })
                 res.status(200).json(data)
 
             } else{
@@ -52,7 +52,7 @@ const landingApi = {
 
         try{
             if(req.params.recclass){
-                data= await Landing.find({recclass: req.params.recclass}, '-_id -id -nametype -mass -fall -year -reclat -reclong -geolocation ')
+                data= await Landing.find({recclass: req.params.recclass}, {name:1, recclass:1, _id:0 })
                 res.status(200).json(data)
 
             } else{
