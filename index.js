@@ -72,6 +72,12 @@ app.listen(port, () => {
 
     //const aux4 = NASA_INFO.collection('Landings').find({fall:"Fell", year: {'$gte':"1880-01-01T00:00:00.000",'$lte': "1881-01-01T00:00:00.000"}}).project({name:1, mass:1, year:1, _id:0 });
 
+
+
+
+
+
+    
 /////////////////////////////Queries que necesito para sacar info de NEAS ////////////////////////////
 
 //1. Quiero obtener la designación y el periodo actual CUANDO añada la clase

@@ -2,19 +2,51 @@ const Landing = require ('../models/landing')
 
 const landingApi = {
 
-    getMeteoritesMinMass: async (req,res)=>{
+    getMeteorites: async (req,res)=>{
+
+        //Cambia la masa de string a number (solo se ejecuta 1 vez)
+            // await Landing.updateMany(
+            //     { 'mass' : { $type: 2 } },
+            //     [{ $set: { 'mass': { $toDouble: "$mass" } } }]
+            // )
+
         let data
 
         try{
-            if(req.query.minimum_mass){
-                data= await Landing.find({mass: {$gte: req.query.minimum_mass}}, {name:1, mass:1, _id:0 })
+
+            if(req.query.minimum_mass){                
+
+                let text = req.query.minimum_mass;
+                let data_minimum_mass = parseInt(text);               
+                
+                data = await Landing.find({mass : {$gte: data_minimum_mass}}, {name:1, mass:1, _id:0 })
+                res.status(200).json(data)
+
+
+            }else if (req.query.from && req.query.to ) {
+                //console.log("Desde " + req.query.from + " hasta " + req.query.to )
+
+                data = await Landing.find({fall:"Fell", year: {$gte: req.query.from, $lte: req.query.to }}, {name:1, mass:1, year:1, _id:0 })
+                res.status(200).json(data)
+
+            } else if(req.query.from){
+                //console.log("Desde " + req.query.from )
+
+                data = await Landing.find({fall:"Fell", year: {$gte: req.query.from}}, {name:1, mass:1, year:1, _id:0 })
+                res.status(200).json(data)
+                
+            } else if(req.query.to){
+                //console.log("Desde " + req.query.to )
+
+                data = await Landing.find({fall:"Fell", year: {$lte: req.query.to }}, {name:1, mass:1, year:1, _id:0 })
                 res.status(200).json(data)
 
             } else{
+                console.log("Búsqueda fallida")
                 data= await Landing.find({});
                 res.status(200).json({landings: data})
             }
-            
+
         }catch(err){
             res.status(400).json({"error":err});
         }
@@ -22,18 +54,16 @@ const landingApi = {
     },
 
     getMeteoritesMass: async (req,res)=>{
-        //console.log("*******************");
-        //console.log(req.params.mass);
 
         let data;
 
-        // const data= await Landing.find({mass:"200000"})
-        // await console.log({data})
-        // res.status(200).json(data)
-
         try{
             if(req.params.mass){
-                data= await Landing.find({mass: req.params.mass}, {name:1, mass:1, _id:0 })
+
+                let text = req.params.mass;
+                let data_mass = parseInt(text);                 
+
+                data= await Landing.find({mass: data_mass}, {name:1, mass:1, _id:0 })
                 res.status(200).json(data)
 
             } else{
@@ -65,8 +95,6 @@ const landingApi = {
         }
 
     }
-
-
 
 }
 

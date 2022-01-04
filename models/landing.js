@@ -13,7 +13,7 @@ const objectSchema = {
         type: String
     },
     mass: {
-        type: String
+        type: Number
     },
     fall: {
         type: String
