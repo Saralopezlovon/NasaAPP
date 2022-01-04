@@ -1,4 +1,4 @@
-const Landing = require ('../models/landing')
+const Landing = require ('../models/landing');
 
 const landingApi = {
 
@@ -95,6 +95,7 @@ const landingApi = {
         }
 
     }
+
 
 }
 

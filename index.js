@@ -1,5 +1,6 @@
 const express = require('express')
 const landingsApiRouter= require('./routes/landingsApi')
+const neasApiRouter= require('./routes/neasApi')
 
 const app = express()
 const port = 3000
@@ -14,7 +15,8 @@ app.get('/', (req, res) => {
     res.send('Mi home de meteoritos')
   }) 
 
-app.use("/api/",landingsApiRouter) //Rutas API landing
+app.use("/api/", landingsApiRouter) //Rutas API landing
+app.use("/api/astronomy/", neasApiRouter) //Rutas API neas
 
  
   
@@ -67,7 +69,7 @@ app.listen(port, () => {
 
     //const aux3 = NASA_INFO.collection('Landings').find({recclass:"L5"}).project({name:1, recclass:1, _id:0 });
 
-//4. Quiero obtener el nombre la masa y la fecha CUANDO especifique la fecha de caida
+//4H. Quiero obtener el nombre la masa y la fecha CUANDO especifique la fecha de caida
 //Utilizamos el gte para mayor o igual y el lt que es menor low than 
 
     //const aux4 = NASA_INFO.collection('Landings').find({fall:"Fell", year: {'$gte':"1880-01-01T00:00:00.000",'$lte': "1881-01-01T00:00:00.000"}}).project({name:1, mass:1, year:1, _id:0 });
@@ -77,7 +79,7 @@ app.listen(port, () => {
 
 
 
-    
+
 /////////////////////////////Queries que necesito para sacar info de NEAS ////////////////////////////
 
 //1. Quiero obtener la designación y el periodo actual CUANDO añada la clase

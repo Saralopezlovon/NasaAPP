@@ -20,4 +20,5 @@ routes.get('/astronomy/landings/mass/:mass?', landingsApi.getMeteoritesMass)
 routes.get('/astronomy/landings/recclass/:recclass?', landingsApi.getMeteoritesRecclass)
 
 
+
 module.exports = routes;
